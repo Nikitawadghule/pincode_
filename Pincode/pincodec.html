@@ -1,0 +1,195 @@
+<html>
+     <head>
+	       <title> India Pincode with Latitude and Longitude  </title>
+		   
+		   
+		   <style>
+	body{
+		 background-image: url("pexels-aaditya-arora-592753.jpg");
+		 background-repeat: no-repeat;
+		 background-size: cover;
+	}
+        section{
+            height: 500px;
+            width: 550px;
+            background-color: rgb(234, 243, 240);
+            margin: auto;
+            margin-top: 50px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background-image: url("pexels-lara-jameson-8828621.jpg");
+            background-size: cover;
+	   
+        }
+        .input{
+            display: flex;
+            margin-left: 80px;
+            height: 30px;
+            
+        }
+
+        #pincode{
+            width: 300px;
+            border: transparent;
+            border-top-left-radius:3px ;
+            border-bottom-left-radius: 3px;
+            text-align: center;
+        }
+        #submit{
+            border: transparent;
+            margin-left: 15px;
+            width: 60px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        #submit:hover{
+            background-color: rgb(77, 184, 233);
+        }
+        .feature{
+            display: flex;
+            margin-left: 80px; 
+        
+        }
+        .feature p{
+            color:red;
+        }
+        #bitcoin{
+            margin-top: 20px;
+            margin-left: 40px;
+            height:20px; width:20px; vertical-align: middle;
+        }
+        #stock{
+            margin-top: 20px;
+            height:20px; width:20px; vertical-align: middle;
+        }
+        #Crypto{
+            margin-top: 20px;
+            margin-left: 40px;
+            height:20px; width:20px; vertical-align: middle;
+        }
+        p{
+            margin-left: 5px;
+            margin-top: 22px;
+        }
+        .main{
+            height: 300px;
+            width: 380px;
+            background-color: whitesmoke;
+            margin-left: 80px;
+            border-radius: 5px;
+            
+        }
+        .main p{
+            margin-top: 10px;
+            margin-left: 20px;
+            padding: 1rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgb(61, 59, 59);
+            font-size: xx-large;
+            margin-bottom: 0px;
+            padding-bottom: 0rem;
+        }
+        .output p{
+            margin-left: 20px;
+            padding: 0.5rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgba(128, 128, 128, 0.668);
+            font-size: large;
+        }
+        .output span{
+            margin-left: 5px;
+            color:black;
+        }
+	h2{
+            color:black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: 15px;
+	    margin-top:15px;
+	    
+        }
+    .back-video{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+    h1{
+        color: white;
+    }
+    </style>
+	 </head>
+	 
+	 <body>
+	    
+        <video autoplay loop muted class="back-video">
+            <source src="3002384-hd_1920_1080_25fps">
+        </video>
+		<section>
+		
+		    <h1 align="center"> Enter your Pincode</h1>
+			<div class="input">
+			    <input type="text" id="pincode" >
+				
+				<input type="submit" value="submit" id="submit">
+				
+			</div>
+			
+			
+			
+			<div class="main">
+			    <p id="textname"></p>
+				<div class="output">
+					<p> Pincode no.:<span id="pincodeNumber"></span></p>
+				    <p> Area : <span id="ar"></span> </p>
+					
+					<p> Latitude : <span id="lati"></span> </p>
+					
+					<p> Longitude : <span id="logi"></span> </p>
+				</div>
+			</div>
+		</section>
+		   
+	   
+		   <script>
+		        
+				const options = {
+               	method: 'GET',
+	             headers: {
+	        	'X-RapidAPI-Key': 'd6bdd689a0msh7117630c96e70abp141352jsn5fff129d6d4b',
+	        	'X-RapidAPI-Host': 'india-pincode-with-latitude-and-longitude.p.rapidapi.com'
+             	}
+                 };
+				 
+				 
+				 const india = (pincode) =>
+				 {
+				    pincodeNumber.innerHTML = pincode
+					
+					fetch('https://india-pincode-with-latitude-and-longitude.p.rapidapi.com/api/v1/pincode/'+ pincode, options)
+					.then( (response) => {return response.json()})
+					.then( (data) => { console.log(data.area)
+							
+							
+						ar.innerHTML = data[0].area
+						lati.innerHTML = data[0].lat
+						logi.innerHTML = data[0].lng
+				    
+				 })	
+				 
+				 }
+				 
+				 
+				 submit.addEventListener("click", (event) => {
+			        event.preventDefault()
+					india(pincode.value)
+					
+			})
+			
+			india("600001")
+		   
+		   </script>
+
+	 
+	 </body>
+
+</html>
